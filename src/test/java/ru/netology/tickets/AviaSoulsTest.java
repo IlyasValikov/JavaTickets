@@ -52,4 +52,41 @@ public class AviaSoulsTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void shouldFindOneTicket() {
+        AviaSouls souls = new AviaSouls();
+
+        souls.add(ticket1);
+
+        Ticket[] expected = {ticket1};
+        Ticket[] actual = souls.search("Moscow", "Saint- Petersburg");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotFindTickets() {
+        AviaSouls souls = new AviaSouls();
+
+        Ticket[] expected = {};
+        Ticket[] actual = souls.search("Moscow", "Saint- Petersburg");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindSomeTickets() {
+        AviaSouls souls = new AviaSouls();
+
+        souls.add(ticket1);
+        souls.add(ticket2);
+        souls.add(ticket3);
+
+
+        Ticket[] expected = {ticket2, ticket3, ticket1};
+        Ticket[] actual = souls.search("Moscow", "Saint- Petersburg");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
